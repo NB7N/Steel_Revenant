@@ -1,0 +1,35 @@
+STEEL REVENANT — MERCENARY COMMAND
+VERSION 0.3.1 ALPHA | ANDROID 8.0+ | OFFLINE SINGLE PLAYER
+Copyright NB7N - Beaner Industries in Association with Jack Ruby Productions
+
+ABOUT
+A single-player mech combat game with a garage, 10 distinct combat chassis, two customizable weapon hardpoints, pilot skills, armor/reactor/weapon upgrades, and first-person missions. Six storyless contracts span Cinder IV, Boreas IX and Vesper Prime. A seventh option, ENDLESS WAVES, lets you survive escalating waves and extract with banked rewards. Graphics are procedural low-poly 3D; this is an early playable alpha, not a commercial-grade 3D engine.
+
+KEY v0.3.1 FIXES
+- Black Market marks chassis you already own as OWNED. You cannot purchase an additional copy while one is in the Garage. Existing duplicate mechs from older versions remain valid and are not deleted; selling a chassis makes its model purchasable again only after you own none of that model.
+- Tactical radar is HEADING-UP. The fixed green arrow points FORWARD on screen; red dots ABOVE it are ahead of you, BELOW it are behind, LEFT/RIGHT indicate the actual relative direction. The HUD includes compass heading and distance/bearing to the nearest hostile. This fixes the previously duplicated radar function where old mapping overwrote the new mapping.
+- The LAST surviving enemy starts actively hunting you, using building-aware pathfinding around streets so the final encounter does not require a lengthy search. Regular enemies spread out and investigate gradually.
+- ENDLESS WAVES: first wave has three hostiles, later waves escalate in count/health/damage, and planets rotate. Completed-wave credits and pilot XP are deposited immediately and preserved on extraction or defeat; an incomplete wave awards nothing. Your best cleared wave is saved. Your current armor carries between waves; the mode has no enemy base to attack.
+
+HOW TO BUILD (WINDOWS)
+Extract Steel_Revenant_Android_v0.3.1.zip with Windows Extract All into DEV\STEEL REVENANT. Open the newly extracted project folder. BUILD RELEASE.bat sits IMMEDIATELY inside that folder, beside the RELEASE subfolder. Do not extract the source ZIP inside RELEASE; that is a backup. Double-click BUILD RELEASE.bat to locate/download official tools as needed, compile, test, lint, sign and package BOTH an installable APK and Google Play AAB into RELEASE. The script works from Windows/OneDrive paths containing spaces and does not require you to edit JAVA_HOME/PATH. The AAB is for Play upload, not sideloading.
+
+SIGNING / UPDATE CONTINUITY
+The app identity remains com.beanerindustries.steelrevenant; versionCode is now 6. The build script silently REUSES the existing private keystore under %LOCALAPPDATA%\BeanerIndustries\SteelRevenant\signing. Back up that entire signing folder securely. NEVER put private keys/passwords in GitHub or RELEASE. Install the new release APK over the old version to retain credits, garage, pilot skills and saved career; uninstalling may erase saved data. The save structure still accepts older v0.1.x through v0.3.0 careers and export codes.
+
+GAME CONTROLS
+Touch: left virtual stick = move; drag right side = look; hold L/R FIRE to shoot; BOOST to dash; PAUSE to resume/leave mission.
+Bluetooth/USB Android-compatible controller: left stick move, right stick aim, LT/RT fire, X boost, Start pause, A select in menus, B back, D-pad navigate, LB/RB switch menu sections. In Settings you can independently INVERT VERTICAL (Y) or INVERT HORIZONTAL (X) for the right stick; settings persist. Actual controller mapping depends on your device.
+Keyboard (browser): WASD movement, arrows aim, J and K or Space fire, Shift boost, Esc/P pause.
+
+GARAGE AND ECONOMY
+Own/buy/sell ten unique chassis, each with speed/armor/reactor differences. Each model can be owned only once from v0.3.1 onward. Weapons are individual inventory items; moving a gun to another chassis unequips it from the old one. Reactor energy limits are enforced. Armor/engine/weapon upgrades and pilot experience persist. Mission victories pay credits/XP. Endless Waves banks only successfully cleared waves; extraction keeps banked rewards.
+
+SAVES AND BACKUPS
+Career is stored in Android app-private WebView localStorage and automatically saved. Browser preview saves are separate. Settings > BACKUP / RESTORE exports and imports career codes. Save a backup before major testing. Importing replaces current progress; invalid codes are rejected.
+
+SYSTEM REQUIREMENTS AND LIMITATIONS
+Android 8.0+ (API 26), preferably modern hardware and an updated Android System WebView. Game is landscape. Offline PvE only; no online accounts, ads, multiplayer, or cloud sync. No Internet permission in Android manifest. Hit detection is simplified hitscan. City rendering is software Canvas rather than Vulkan/Unity. Larger wave counts can affect phone performance. The Android APK/AAB and physical controller MUST be compiled/tested on your Windows computer and Android phone; JavaScript/browser tests alone do not prove device compatibility.
+
+TROUBLESHOOTING
+No APK/AAB: BUILD RELEASE.bat reports FAILED if compile, lint, signing or release verification fails. It writes LAST_BUILD_LOG.txt and when available LAST_LINT_REPORT.txt beside the batch file. Upload those files to diagnose errors. No weapon fire: check that your mech has an equipped gun, crosshair is on the enemy, and heat is below maximum. Saved progress: do NOT uninstall the old app before updating it. Controller no response: pair the gamepad with Android and confirm it acts as a game controller, not keyboard-only mode. Audio may need a user gesture to start.
